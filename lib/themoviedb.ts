@@ -1,27 +1,20 @@
-/* eslint-disable prettier/prettier */
-const API_KEY = "ad39e3389deecacb24412a4ad52e250f";
+const THEMOVIEDB_API_KEY = process.env.API_KEY;
 const BASE_URI = "http://api.themoviedb.org/3/";
 const IMAGES_URI = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
 const TIMEOUT = 2000;
 const LANGUAGE = "en-US";
-//https://image.tmdb.org/t/p/w600_and_h900_bestv2/mBcu8d6x6zB1el3MPNl7cZQEQ31.jpg
 
 export async function getPopular() {
   const POPULAR_SERIES = 
   `${BASE_URI}tv/popular?api_key=${API_KEY}&&language=${LANGUAGE}`;
-    //"https://internal-prod.apigee.fandom.net/v1/xapi/finder/metacritic/web?sortBy=-metaScore&productType=games&page=1&releaseYearMin=1958&releaseYearMax=2024&offset=0&limit=24&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u";
 
   const rawData = await fetch(POPULAR_SERIES);
   const json = await rawData.json();
   //console.log("json", json);
   //console.log("json.results", json.results);
 
-  /* const {
-    data: { results },
-  } = json.results; */
-
   return json.results.map((item) => {
-    //console.log("item", item);
+  
     const { overview, id, first_air_date, poster_path, vote_average, original_name } =
       item;
 
@@ -42,16 +35,11 @@ export async function getPopular() {
 export async function getTrending() {
   const TRENDING_SERIES = 
   `${BASE_URI}trending/tv/day?api_key=${API_KEY}&&language=${LANGUAGE}`;
-    //"https://internal-prod.apigee.fandom.net/v1/xapi/finder/metacritic/web?sortBy=-metaScore&productType=games&page=1&releaseYearMin=1958&releaseYearMax=2024&offset=0&limit=24&apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u";
 
   const rawData = await fetch(TRENDING_SERIES);
   const json = await rawData.json();
   //console.log("json", json);
   //console.log("json.results", json.results);
-
-  /* const {
-    data: { results },
-  } = json.results; */
 
   return json.results.map((item) => {
     //console.log("item", item);
@@ -90,10 +78,7 @@ export async function getSerieDetails(slug) {
   //console.log("jsonReviews", jsonReviews);
 
   const { original_name, overview, vote_average, poster_path } = json;
-  //const { score } = vote_average;
-  // get the card image
-  //const cardImage = jsonImages.find((image) => image.typeName === "cardImage");
-  
+
   // crea la imagen
   const img = `${IMAGES_URI}${poster_path}`;
 
