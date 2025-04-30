@@ -17,7 +17,9 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```
 
 3. Open the app
-   You can scan the QR code with your phone's camera or the Expo Go app to open the app on your device.
+
+   If you are using a physical device, you can use the Expo Go app to scan the QR code displayed in the terminal or on the web page that opens.
+
    - On Android, scan the QR code with the Expo Go app.
    - On iOS, scan the QR code with the Camera app or use the Expo Go app.
    - On web, open the URL in your browser.
