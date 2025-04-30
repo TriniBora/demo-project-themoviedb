@@ -1,4 +1,4 @@
-const THEMOVIEDB_API_KEY = process.env.API_KEY;
+const API_KEY = process.env.EXPO_PUBLIC_THEMOVIEDB_API_KEY;
 const BASE_URI = "http://api.themoviedb.org/3/";
 const IMAGES_URI = "https://image.tmdb.org/t/p/w600_and_h900_bestv2";
 const TIMEOUT = 2000;
